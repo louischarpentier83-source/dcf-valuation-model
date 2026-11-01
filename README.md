@@ -32,12 +32,16 @@ NOPAT             = EBIT x (1 - tax rate)
 NWC               = Inventory + Receivables - Payables
 FCF               = NOPAT + D&A - CapEx - Change in NWC
 
-Terminal value    = FCF(final year) x (1 + g) / (WACC - g)     [Gordon Growth]
+Terminal RONIC    = WACC + RONIC spread
+Terminal FCF      = NOPAT(final year) x (1 + g) x (1 - g / RONIC)
+Terminal value    = Terminal FCF / (WACC - g)                  [Gordon Growth]
 Enterprise value  = sum of PV(FCF) + PV(Terminal value)
 Price per share   = (Enterprise value - Net debt) / Shares
 ```
 
 Two choices I had to make. The market capitalisation used for the WACC weights is based on the current share price and not on the price the model produces, otherwise the calculation would be circular. And the WACC weights use gross debt while the equity bridge uses net debt.
+
+Terminal RONIC is set at WACC + 2 points because it applies only to new investments, not to capital already in place (the value driver logic from McKinsey's *Valuation*), which is a prudent assumption close to that book's RONIC = WACC baseline, and it implies terminal CapEx of about 1.55x D&A (1.2x over the forecast).
 
 ## Results
 
@@ -46,12 +50,12 @@ The figures below come from a sample company, not a real one. The point of the p
 | | |
 |---|---|
 | WACC | 7.87% |
-| Enterprise value | $27,262m |
-| Terminal value as % of EV | 78.3% |
-| Implied share price | $49.52 |
+| Enterprise value | $24,938m |
+| Terminal value as % of EV | 76.3% |
+| Implied share price | $44.88 |
 | Current share price | $32.00 |
 
-Across a +/-100bp WACC band and a 1% to 3% terminal growth band, the implied price ranges from $37 to $76. That range is the reason the sensitivity table is in there.
+Across a +/-100bp WACC band and a 1% to 3% terminal growth band, the implied price ranges from $37 to $58. That range is the reason the sensitivity table is in there.
 
 ## Running it
 
@@ -67,7 +71,7 @@ All the inputs are in section 1, nothing else needs to be changed.
 ## What I would improve
 
 - CapEx, D&A and working capital are simple percentages of revenue. A proper model would separate maintenance capex from growth capex.
-- The terminal value is about 78% of the enterprise value, so the result depends a lot on the perpetual growth rate.
+- The terminal value is about 76% of the enterprise value, so the result depends a lot on the perpetual growth rate.
 - Cash flows are discounted as if received at year end, with no mid-year convention.
 - Beta is an input. Estimating it with a regression against a market index would be the next step.
 
