@@ -57,6 +57,8 @@ The figures below come from a sample company, not a real one. The point of the p
 
 Across a +/-100bp WACC band and a 1% to 3% terminal growth band, the implied price ranges from $37 to $58. That range is the reason the sensitivity table is in there.
 
+A second table crosses the terminal EBITDA margin (21% to 29%) with yearly revenue growth (-2 to +2 points): even its most adverse scenario ($34) stays above the current share price of $32.
+
 ## Running it
 
 Click the Colab badge to open the notebook in a browser, or run it locally:
