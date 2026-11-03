@@ -6,6 +6,8 @@ I am a Master's student in corporate finance and I had only ever built DCFs in E
 
 The WACC is calculated from CAPM inputs (risk-free rate, beta, market premium, credit spread) instead of being assumed, and the cash flows are built from revenue.
 
+The same method applied to a real company, with 10-K data and a regression beta: [Lockheed Martin DCF](https://github.com/louischarpentier83-source/lockheed-martin-dcf).
+
 [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/louischarpentier83-source/dcf-valuation-model/blob/main/DCF.ipynb)
 
 ![Free cash flow chart](dcf_output.png)
